@@ -1,0 +1,26 @@
+{
+    "name": "mixdinternet/articles",
+    "description": "Pacote básico de artigos",
+    "keywords": ["laravel", "artigos", "articles", "seo"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Irineu Martins Junior",
+            "email": "irineu@mixd.com.br",
+            "homepage": "http://www.mixd.com.br/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.1.*",
+        "mixdinternet/seo": "0.1.*",
+        "folklore/image": "0.2.*",
+        "mixdinternet/laravel-stapler-extra": "0.1.*",
+    },
+    "autoload": {
+        "psr-4": {
+            "Mixdinternet\\Articles\\": "src/"
+        }
+    }
+}
