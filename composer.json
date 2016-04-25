@@ -16,7 +16,7 @@
         "laravel/framework": "5.1.*",
         "mixdinternet/seo": "0.1.*",
         "folklore/image": "0.2.*",
-        "mixdinternet/laravel-stapler-extra": "0.1.*",
+        "mixdinternet/laravel-stapler-extra": "0.1.*"
     },
     "autoload": {
         "psr-4": {
