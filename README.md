@@ -1,4 +1,4 @@
-## Seo
+## Articles
 
 [![Total Downloads](https://poser.pugx.org/mixdinternet/articles/d/total.svg)](https://packagist.org/packages/mixdinternet/articles)
 [![Latest Stable Version](https://poser.pugx.org/mixdinternet/articles/v/stable.svg)](https://packagist.org/packages/mixdinternet/articles)
