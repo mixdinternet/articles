@@ -19,4 +19,6 @@ return [
         'width' => 640
         , 'height' => 480
     ]
+
+    , 'galleries' =>true
 ];

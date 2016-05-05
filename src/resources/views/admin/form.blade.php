@@ -12,6 +12,9 @@
         <ul class="nav nav-tabs pull-right">
             <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Geral</a></li>
             <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">SEO</a></li>
+            @if (config('marticles.galleries', true)) 
+                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Galeria</a></li>
+            @endif 
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
@@ -27,7 +30,7 @@
 
                 {!! BootForm::text('name', 'Nome', null, ['data-rule-required' => true, 'maxlength' => '150']) !!}
 
-                {!! BootForm::textarea('description', 'Descrição', null, ['data-rule-required' => true]) !!}
+                {!! BootForm::textarea('description', 'Descrição', null, ['class' => 'jq-summernote', 'data-rule-required' => true]) !!}
 
                 @if (config('marticles.image', true))
                 {!! BootForm::file('image', 'Imagem', [
@@ -47,6 +50,11 @@
             <div class="tab-pane" id="tab_2">
                 @include('mixdinternet/seo::partials.form', ['model' => isset($article) ? $article : null])
             </div>
+            @if (config('marticles.galleries', true)) 
+                <div class="tab-pane" id="tab_3">
+                    {!! Gallery::form($article) !!}
+                </div>
+            @endif 
         </div>
     </div>
     {!! BootForm::close() !!}

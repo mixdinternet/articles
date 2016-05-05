@@ -12,10 +12,13 @@ use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Mixdinternet\Seo\SeoTrait;
 use Mixdinternet\Seo\SeoInterface;
+use Mixdinternet\Galleries\GalleriableTrait;
+use Mixdinternet\Galleries\GalleriableInterface;
 
-class Article extends Model implements SluggableInterface, SeoInterface, StaplerableInterface
+class Article extends Model implements SluggableInterface, SeoInterface, StaplerableInterface, GalleriableInterface
 {
-    use SoftDeletes, SluggableTrait, SeoTrait, RevisionableTrait, EloquentTrait;
+{
+    use SoftDeletes, SluggableTrait, SeoTrait, RevisionableTrait, EloquentTrait, GalleriableTrait;
 
     protected $revisionCreationsEnabled = true;
 
