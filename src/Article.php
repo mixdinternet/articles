@@ -17,7 +17,6 @@ use Mixdinternet\Galleries\GalleriableInterface;
 
 class Article extends Model implements SluggableInterface, SeoInterface, StaplerableInterface, GalleriableInterface
 {
-{
     use SoftDeletes, SluggableTrait, SeoTrait, RevisionableTrait, EloquentTrait, GalleriableTrait;
 
     protected $revisionCreationsEnabled = true;
