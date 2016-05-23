@@ -113,3 +113,7 @@
 @section('pagination')
     {!! $articles->appends(request()->except(['page']))->render() !!}
 @endsection
+
+@section('pagination-showing')
+    @include('admin.partials.pagination-showing', ['model' => $articles])
+@endsection
