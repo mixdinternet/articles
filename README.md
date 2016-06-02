@@ -8,6 +8,11 @@
 
 Pacote inicial de cadastro de artigos.
 
+## Dependencias
+Os pacotes mixdinternet/seo e mixdinternet/galleries são dependencias deste pacote, siga as instruções na página dos respectivos pacotes:
+* [Seo](https://github.com/mixdinternet/seo)
+* [Galleries](https://github.com/mixdinternet/galleries)
+
 ## Instalação
 
 Adicione no seu composer.json
