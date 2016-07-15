@@ -15,7 +15,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "mixdinternet/seo": "0.1.*",
-        "folklore/image": "0.2.*",
+        "folklore/image": "0.3.*",
         "mixdinternet/laravel-stapler-extra": "0.1.*",
         "mixdinternet/galleries": "0.1.*"
     },
