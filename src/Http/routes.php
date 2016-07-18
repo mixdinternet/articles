@@ -16,3 +16,8 @@ Route::group(['prefix' => config('admin.url')], function () {
         Route::delete('articles/destroy', ['uses' => 'ArticlesAdminController@destroy', 'as' => 'admin.articles.destroy']);
     });
 });
+
+Route::group(['prefix' => 'api'], function () {
+    Route::get('articles', ['uses' => 'ArticlesController@index', 'as' => 'api.articles.index']);
+    Route::get('articles/{slug}', ['uses' => 'ArticlesController@show', 'as' => 'api.articles.show']);
+});
