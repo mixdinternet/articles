@@ -66,6 +66,14 @@ class Article extends Model implements SluggableInterface, SeoInterface, Stapler
         static::bootStapler();
     }
 
+    public function toArray()
+    {
+        return array_merge(parent::toArray(), [
+            'image' => $this->attachedFiles['image']->url()
+            , 'image_crop' => $this->attachedFiles['image']->url('crop')
+        ]);
+    }
+
     public function setPublishedAtAttribute($value)
     {
         $this->attributes['published_at'] = Carbon::createFromFormat('d/m/Y H:i', $value)

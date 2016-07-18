@@ -20,6 +20,6 @@ class ArticlesController extends FrontendController
 
     public function show($slug)
     {
-        return Article::select($this->fields)->with('galleries.images')->active()->where('slug', $slug)->first();
+        return Article::select($this->fields)->with(['seo', 'galleries.images'])->active()->where('slug', $slug)->first();
     }
 }
