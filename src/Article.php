@@ -33,8 +33,8 @@ class Article extends Model implements SluggableInterface, SeoInterface, Stapler
     ];
 
     protected $seomap = [ /* mover para config */
-        'title' => 'name',
-        'description' => 'description'
+        'title' => ['name'],
+        'description' => ['description']
     ];
 
     protected $dates = ['deleted_at', 'published_at'];
