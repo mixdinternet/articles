@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ArticlesController extends FrontendController
 {
-    protected $fields = ['id', 'star', 'name', 'description', 'published_at', 'slug', 'image_file_name'];
+    protected $fields = ['id', 'star', 'call', 'name', 'description', 'published_at', 'slug', 'image_file_name'];
 
     public function index(Request $request)
     {

@@ -20,5 +20,7 @@ return [
         , 'height' => 480
     ]
 
-    , 'galleries' =>true
+    , 'galleries' => true
+
+    , 'call' => false
 ];

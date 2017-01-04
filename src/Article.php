@@ -23,6 +23,7 @@ class Article extends Model implements SluggableInterface, SeoInterface, Stapler
 
     protected $revisionFormattedFieldNames = [
         'name' => 'nome'
+        , 'call' => 'chamada'
         , 'star' => 'destaque'
         , 'description' => 'descrição'
         , 'published_at' => 'data de publicação'
@@ -39,7 +40,7 @@ class Article extends Model implements SluggableInterface, SeoInterface, Stapler
 
     protected $dates = ['deleted_at', 'published_at'];
 
-    protected $fillable = ['status', 'star', 'name', 'description', 'image', 'published_at'];
+    protected $fillable = ['status', 'star', 'call', 'name', 'description', 'image', 'published_at'];
 
     public function __construct(array $attributes = [])
     {
@@ -47,9 +48,10 @@ class Article extends Model implements SluggableInterface, SeoInterface, Stapler
             'styles' => [
                 'crop' => function ($file, $imagine) {
                     $image = $imagine->open($file->getRealPath());
-                    $image->crop(new \Imagine\Image\Point(request()->input('crop.image.x'), request()->input('crop.image.y'))
-                        , new \Imagine\Image\Box(request()->input('crop.image.w'), request()->input('crop.image.h')));
-
+                    if (request()->input('crop.image.w', 0) > 0 && request()->input('crop.image.y', 0) > 0) {
+                        $image->crop(new \Imagine\Image\Point(request()->input('crop.image.x'), request()->input('crop.image.y'))
+                            , new \Imagine\Image\Box(request()->input('crop.image.w'), request()->input('crop.image.h')));
+                    }
                     return $image;
                 }
             ],
@@ -102,7 +104,7 @@ class Article extends Model implements SluggableInterface, SeoInterface, Stapler
 
     public function scopeActive($query)
     {
-        $query->where('status', 'active')->sort();
+        $query->where('status', 'active')->where('published_at', '<=', Carbon::now())->sort();
     }
 
     # revision

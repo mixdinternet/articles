@@ -28,19 +28,23 @@
                 {!! BootForm::select('star', 'Destaque', ['0' => 'Não', '1' => 'Sim'], null
                     , ['class' => 'jq-select2', 'data-rule-required' => true]) !!}
 
+                @if (config('marticles.call', true))
+                    {!! BootForm::text('call', 'Chamada', null, ['maxlength' => '150']) !!}
+                @endif
+
                 {!! BootForm::text('name', 'Nome', null, ['data-rule-required' => true, 'maxlength' => '150']) !!}
 
-                {!! BootForm::textarea('description', 'Descrição', null, ['class' => 'jq-summernote', 'data-rule-required' => true]) !!}
+                {!! BootForm::textarea('description', 'Descrição', null, ['class' => 'jq-summernote', 'data-rule-required' => true, 'style' => 'height: 200px']) !!}
 
                 @if (config('marticles.image', true))
-                {!! BootForm::file('image', 'Imagem', [
-                        'data-allowed-file-extensions' => '["jpg", "png"]',
-                        'data-initial-preview' => '["<img src=\"' . $article->image->url('crop') . '\" class=\"file-preview-image\">"]',
-                        'data-initial-caption' => $article->image->originalFilename(),
-                        'data-min-image-width' => config('marticles.image.width', 640),
-                        'data-min-image-height' => config('marticles.image.height', 480),
-                        'data-aspect-ratio' => number_format(config('marticles.image.width', 640)/config('marticles.image.height', 480), 2)
-                    ]) !!}
+                    {!! BootForm::file('image', 'Imagem', [
+                            'data-allowed-file-extensions' => '["jpg", "png"]',
+                            'data-initial-preview' => '["<img src=\"' . $article->image->url('crop') . '\" class=\"file-preview-image\">"]',
+                            'data-initial-caption' => $article->image->originalFilename(),
+                            'data-min-image-width' => config('marticles.image.width', 640),
+                            'data-min-image-height' => config('marticles.image.height', 480),
+                            'data-aspect-ratio' => number_format(config('marticles.image.width', 640)/config('marticles.image.height', 480), 2)
+                        ]) !!}
                 @endif
 
                 {!! BootForm::text('published_at', 'Data de publicação', ($article->published_at) ? $article->published_at->format('d/m/Y H:i') : null
