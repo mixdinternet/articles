@@ -1,4 +1,4 @@
-@extends('admin.form')
+@extends('mixdinternet/admix::form')
 
 @section('title')
     Gerenciar {{ strtolower(config('marticles.name', 'Artigos')) }}

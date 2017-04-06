@@ -1,4 +1,4 @@
-@extends('admin.index')
+@extends('mixdinternet/admix::index')
 
 @section('title')
     Listagem de {{ strtolower(config('marticles.name', 'Artigos')) }}
@@ -6,7 +6,7 @@
 
 @section('btn-insert')
     @if((!checkRule('admin.articles.create')) && (!$trash))
-        @include('mixdinternet/admix::partials.actions.btn.insert', ['route' => route('admin.articles.create'), 'title' => 'Marca'])
+        @include('mixdinternet/admix::partials.actions.btn.insert', ['route' => route('admin.articles.create')])
     @endif
     @if((!checkRule('admin.articles.trash')) && (!$trash))
         @include('mixdinternet/admix::partials.actions.btn.trash', ['route' => route('admin.articles.trash')])

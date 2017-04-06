@@ -4,20 +4,19 @@ namespace Mixdinternet\Articles;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Cviebrock\EloquentSluggable\SluggableTrait;
-use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\RevisionableTrait;
-use Carbon\Carbon;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Mixdinternet\Seo\SeoTrait;
 use Mixdinternet\Seo\SeoInterface;
 use Mixdinternet\Galleries\GalleriableTrait;
 use Mixdinternet\Galleries\GalleriableInterface;
+use Carbon\Carbon;
 
-class Article extends Model implements SluggableInterface, SeoInterface, StaplerableInterface, GalleriableInterface
+class Article extends Model implements SeoInterface, StaplerableInterface, GalleriableInterface
 {
-    use SoftDeletes, SluggableTrait, SeoTrait, RevisionableTrait, EloquentTrait, GalleriableTrait;
+    use SoftDeletes, Sluggable, SeoTrait, RevisionableTrait, EloquentTrait, GalleriableTrait;
 
     protected $revisionCreationsEnabled = true;
 
@@ -43,6 +42,15 @@ class Article extends Model implements SluggableInterface, SeoInterface, Stapler
     protected $fillable = [
         'status', 'star', 'call', 'name', 'description', 'image', 'published_at'
     ];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function __construct(array $attributes = [])
     {
