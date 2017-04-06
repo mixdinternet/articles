@@ -3,21 +3,13 @@
 namespace Mixdinternet\Articles\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Caffeinated\Flash\Facades\Flash;
-use App\Http\Controllers\AdminController;
-
+use Mixdinternet\Admix\Http\Controllers\AdmixController;
 use Mixdinternet\Articles\Article;
 use Mixdinternet\Articles\Http\Requests\CreateEditArticlesRequest;
 
-class ArticlesAdminController extends AdminController
+class ArticlesAdminController extends AdmixController
 {
-
-    public function __construct()
-    {
-
-    }
-
     public function index(Request $request)
     {
         session()->put('backUrl', request()->fullUrl());

@@ -20,9 +20,9 @@ class ArticlesServiceProvider extends ServiceProvider
 
         $this->setRoutes();
 
-        $this->setRouterBind();
-
         $this->loadViews();
+
+        $this->loadMigrations();
 
         $this->publish();
     }
@@ -34,7 +34,7 @@ class ArticlesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/maudit.php', 'maudit.alias');
+        $this->loadConfigs();
     }
 
     protected function setMenu()
@@ -58,26 +58,25 @@ class ArticlesServiceProvider extends ServiceProvider
         if (!$this->app->routesAreCached()) {
             $this->app->router->group(['namespace' => 'Mixdinternet\Articles\Http\Controllers'],
                 function () {
-                    require __DIR__ . '/../Http/routes.php';
+                    require __DIR__ . '/../routes/web.php';
                 });
         }
-    }
-
-    protected function setRouterBind()
-    {
-        $this->app->router->bind('articles', function ($id) {
-            $article = Article::find($id);
-            if (!$article) {
-                abort(404);
-            }
-
-            return $article;
-        });
     }
 
     protected function loadViews()
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mixdinternet/articles');
+    }
+
+    protected function loadMigrations()
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+    }
+
+    protected function loadConfigs()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/maudit.php', 'maudit.alias');
+        $this->mergeConfigFrom(__DIR__ . '/../config/marticles.php', 'marticles');
     }
 
     protected function publish()

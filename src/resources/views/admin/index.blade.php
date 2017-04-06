@@ -6,19 +6,19 @@
 
 @section('btn-insert')
     @if((!checkRule('admin.articles.create')) && (!$trash))
-        @include('admin.partials.actions.btn.insert', ['route' => route('admin.articles.create'), 'title' => 'Marca'])
+        @include('mixdinternet/admix::partials.actions.btn.insert', ['route' => route('admin.articles.create'), 'title' => 'Marca'])
     @endif
     @if((!checkRule('admin.articles.trash')) && (!$trash))
-        @include('admin.partials.actions.btn.trash', ['route' => route('admin.articles.trash')])
+        @include('mixdinternet/admix::partials.actions.btn.trash', ['route' => route('admin.articles.trash')])
     @endif
     @if($trash)
-        @include('admin.partials.actions.btn.list', ['route' => route('admin.articles.index')])
+        @include('mixdinternet/admix::partials.actions.btn.list', ['route' => route('admin.articles.index')])
     @endif
 @endsection
 
 @section('btn-delete-all')
     @if((!checkRule('admin.articles.destroy')) && (!$trash))
-        @include('admin.partials.actions.btn.delete-all', ['route' => route('admin.articles.destroy')])
+        @include('mixdinternet/admix::partials.actions.btn.delete-all', ['route' => route('admin.articles.destroy')])
     @endif
 @endsection
 
@@ -83,22 +83,22 @@
                 <tr>
                     @if((!checkRule('admin.articles.destroy')) && (!$trash))
                         <td>
-                            @include('admin.partials.actions.checkbox', ['row' => $article])
+                            @include('mixdinternet/admix::partials.actions.checkbox', ['row' => $article])
                         </td>
                     @endif
                     <td>{{ $article->id }}</td>
                     <td>{{ $article->name }}</td>
-                    <td>@include('admin.partials.label.yes-no', ['yesNo' => $article->star])</td>
-                    <td>@include('admin.partials.label.status', ['status' => $article->status])</td>
+                    <td>@include('mixdinternet/admix::partials.label.yes-no', ['yesNo' => $article->star])</td>
+                    <td>@include('mixdinternet/admix::partials.label.status', ['status' => $article->status])</td>
                     <td>
                         @if((!checkRule('admin.articles.edit')) && (!$trash))
-                            @include('admin.partials.actions.btn.edit', ['route' => route('admin.articles.edit', $article->id)])
+                            @include('mixdinternet/admix::partials.actions.btn.edit', ['route' => route('admin.articles.edit', $article->id)])
                         @endif
                         @if((!checkRule('admin.articles.destroy')) && (!$trash))
-                            @include('admin.partials.actions.btn.delete', ['route' => route('admin.articles.destroy'), 'id' => $article->id])
+                            @include('mixdinternet/admix::partials.actions.btn.delete', ['route' => route('admin.articles.destroy'), 'id' => $article->id])
                         @endif
                         @if($trash)
-                            @include('admin.partials.actions.btn.restore', ['route' => route('admin.articles.restore', $article->id)])
+                            @include('mixdinternet/admix::partials.actions.btn.restore', ['route' => route('admin.articles.restore', $article->id)])
                         @endif
                     </td>
                 </tr>
@@ -106,7 +106,7 @@
             </tbody>
         </table>
     @else
-        @include('admin.partials.nothing-found')
+        @include('mixdinternet/admix::partials.nothing-found')
     @endif
 @endsection
 
@@ -115,5 +115,5 @@
 @endsection
 
 @section('pagination-showing')
-    @include('admin.partials.pagination-showing', ['model' => $articles])
+    @include('mixdinternet/admix::partials.pagination-showing', ['model' => $articles])
 @endsection
