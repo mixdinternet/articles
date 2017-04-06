@@ -40,7 +40,9 @@ class Article extends Model implements SluggableInterface, SeoInterface, Stapler
 
     protected $dates = ['deleted_at', 'published_at'];
 
-    protected $fillable = ['status', 'star', 'call', 'name', 'description', 'image', 'published_at'];
+    protected $fillable = [
+        'status', 'star', 'call', 'name', 'description', 'image', 'published_at'
+    ];
 
     public function __construct(array $attributes = [])
     {
