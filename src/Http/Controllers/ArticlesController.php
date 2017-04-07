@@ -2,11 +2,11 @@
 
 namespace Mixdinternet\Articles\Http\Controllers;
 
-use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Controller;
 use Mixdinternet\Articles\Article;
 use Illuminate\Http\Request;
 
-class ArticlesController extends FrontendController
+class ArticlesController extends Controller
 {
     protected $fields = ['id', 'star', 'call', 'name', 'description', 'published_at', 'slug', 'image_file_name'];
 
