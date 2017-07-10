@@ -37,7 +37,7 @@
                 {!! BootForm::textarea('description', 'Descrição', null, ['class' => 'jq-summernote', 'data-rule-required' => true, 'style' => 'height: 200px']) !!}
 
                 @if (config('marticles.image', true))
-                    {!! BootForm::file('image', 'Imagem', [
+                    {!! BootForm::file('image', 'Imagem ('.config("marticles.image.width", 640).' x '.config("marticles.image.height", 480).')', [
                             'data-allowed-file-extensions' => '["jpg", "png"]',
                             'data-initial-preview' => '["<img src=\"' . $article->image->url('crop') . '\" class=\"file-preview-image\">"]',
                             'data-initial-caption' => $article->image->originalFilename(),
